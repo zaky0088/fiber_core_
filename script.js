@@ -17,7 +17,7 @@ function tambahData() {
     core: Number(core.value),
     pot: Number(pot.value),
     teknisi: teknisi.value,
-    status: status.value
+    status: document.getElementById("status").value
   };
 
   data.push(d);
