@@ -63,7 +63,7 @@ function renderTable() {
       d.odp.toLowerCase().includes(search)
     ) {
       totalCore += d.core;
-
+      let realIndex = data.indexOf(d);
       body.innerHTML += `
         <tr>
           <td>${i + 1}</td>
