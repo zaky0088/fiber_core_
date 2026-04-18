@@ -33,14 +33,15 @@ function hapus(i) {
 
 function edit(i) {
   let d = data[i];
-  jalur.value = d.jalur;
-  odp.value = d.odp;
-  core.value = d.core;
-  pot.value = d.pot;
-  teknisi.value = d.teknisi;
-  status.value = d.status;
 
-  hapus(i);
+  document.getElementById("jalur").value = d.jalur;
+  document.getElementById("odp").value = d.odp;
+  document.getElementById("core").value = d.core;
+  document.getElementById("pot").value = d.pot;
+  document.getElementById("teknisi").value = d.teknisi;
+  document.getElementById("status").value = d.status;
+
+  editIndex = i; // simpan index
 }
 
 function renderTable() {
