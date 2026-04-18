@@ -12,15 +12,21 @@ function simpan() {
 
 function tambahData() {
   let d = {
-    jalur: jalur.value,
-    odp: odp.value,
-    core: Number(core.value),
-    pot: Number(pot.value),
-    teknisi: teknisi.value,
+    jalur: document.getElementById("jalur").value,
+    odp: document.getElementById("odp").value,
+    core: Number(document.getElementById("core").value),
+    pot: Number(document.getElementById("pot").value),
+    teknisi: document.getElementById("teknisi").value,
     status: document.getElementById("status").value
   };
 
-  data.push(d);
+  if (editIndex === -1) {
+    data.push(d); // tambah baru
+  } else {
+    data[editIndex] = d; // replace data lama
+    editIndex = -1;
+  }
+
   simpan();
   renderTable();
 }
