@@ -43,7 +43,8 @@ function edit(i) {
   document.getElementById("pot").value = d.pot;
   document.getElementById("teknisi").value = d.teknisi;
   document.getElementById("status").value = d.status;
-
+  document.getElementById("search").value = "";
+  renderTable();
   editIndex = i;
 
   console.log("EDIT INDEX:", editIndex); // debug
