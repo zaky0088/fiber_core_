@@ -1,5 +1,5 @@
 let data = JSON.parse(localStorage.getItem("nocData")) || [];
-
+let editIndex = -1;
 function updateTime() {
   document.getElementById("time").innerText =
     new Date().toLocaleTimeString();
@@ -20,10 +20,12 @@ function tambahData() {
     status: document.getElementById("status").value
   };
 
+  console.log("CURRENT EDIT INDEX:", editIndex); // debug
+
   if (editIndex === -1) {
-    data.push(d); // tambah baru
+    data.push(d);
   } else {
-    data[editIndex] = d; // replace data lama
+    data[editIndex] = d;
     editIndex = -1;
   }
 
@@ -31,11 +33,6 @@ function tambahData() {
   renderTable();
 }
 
-function hapus(i) {
-  data.splice(i, 1);
-  simpan();
-  renderTable();
-}
 
 function edit(i) {
   let d = data[i];
@@ -47,7 +44,9 @@ function edit(i) {
   document.getElementById("teknisi").value = d.teknisi;
   document.getElementById("status").value = d.status;
 
-  editIndex = i; // simpan index
+  editIndex = i;
+
+  console.log("EDIT INDEX:", editIndex); // debug
 }
 
 function renderTable() {
