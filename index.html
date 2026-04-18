@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FTTH NOC Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+  <h2>FTTH NOC Monitoring</h2>
+  <span id="time"></span>
+</header>
+
+<div class="topbar">
+  <input type="text" id="jalur" placeholder="Nama Jalur">
+  <input type="text" id="odp" placeholder="ODP">
+  <input type="number" id="core" placeholder="Core">
+  <input type="number" id="pot" placeholder="Pot">
+  <input type="text" id="teknisi" placeholder="Teknisi">
+
+  <select id="status">
+    <option value="Active">Active</option>
+    <option value="Maintenance">Maintenance</option>
+  </select>
+
+  <button onclick="tambahData()">Tambah</button>
+</div>
+
+<div class="cards">
+  <div class="card">Total Jalur<br><span id="totalJalur">0</span></div>
+  <div class="card">Total Core Used<br><span id="totalCore">0</span></div>
+  <div class="card red">Jalur Putus<br><span id="jalurPutus">0</span></div>
+</div>
+
+<input type="text" id="search" placeholder="Cari ODP / Jalur..." onkeyup="renderTable()">
+
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Jalur</th>
+<th>ODP</th>
+<th>Core</th>
+<th>Pot</th>
+<th>Teknisi</th>
+<th>Status</th>
+<th>Aksi</th>
+</tr>
+</thead>
+
+<tbody id="tableBody"></tbody>
+</table>
+
+<script src="script.js"></script>
+</body>
+</html>
