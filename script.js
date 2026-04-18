@@ -57,51 +57,41 @@ function renderTable() {
 
   let totalCore = 0;
 
-  data.forEach((d, i) => {
-  if (
-    d.jalur.toLowerCase().includes(search) ||
-    d.odp.toLowerCase().includes(search)
-  ) {
+  data.forEach((d, index) => {
 
-    totalCore += d.core;
+    // filter manual
+    if (
+      d.jalur.toLowerCase().includes(search) ||
+      d.odp.toLowerCase().includes(search)
+    ) {
 
-    data.forEach((d, i) => {
-  if (
-    d.jalur.toLowerCase().includes(search) ||
-    d.odp.toLowerCase().includes(search)
-  ) {
+      totalCore += d.core;
 
-    totalCore += d.core;
+      body.innerHTML += `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${d.jalur}</td>
+          <td>${d.odp}</td>
+          <td>${d.core}</td>
+          <td>${d.pot}</td>
+          <td>${d.teknisi}</td>
+          <td>
+            <span class="${d.status == "Active" ? "active" : "maintenance"}">
+              ${d.status}
+            </span>
+          </td>
+          <td>
+            <button onclick="edit(${index})">Edit</button>
+            <button onclick="hapus(${index})">Hapus</button>
+          </td>
+        </tr>
+      `;
+    }
 
-    let realIndex = i;
-
-    body.innerHTML += `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${d.jalur}</td>
-        <td>${d.odp}</td>
-        <td>${d.core}</td>
-        <td>${d.pot}</td>
-        <td>${d.teknisi}</td>
-        <td>
-          <span class="${d.status == "Active" ? "active" : "maintenance"}">
-            ${d.status}
-          </span>
-        </td>
-        <td>
-          <button onclick="edit(${realIndex})">Edit</button>
-          <button onclick="hapus(${realIndex})">Hapus</button>
-        </td>
-      </tr>
-    `;
-  }
-});
-        
+  });
 
   document.getElementById("totalJalur").innerText = data.length;
-  document.getElementById("totalCore").innerText = totalCore;
-  document.getElementById("jalurPutus").innerText =
-  data.filter(d => d.status == "Maintenance").length;
-} 
-
-renderTable();
+  document.getElementById("totalCore").innerText = totalCore;
+  document.getElementById("jalurPutus").innerText =
+    data.filter(d => d.status == "Maintenance").length;
+}
